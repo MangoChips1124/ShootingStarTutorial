@@ -46,6 +46,9 @@ public class Player : MonoBehaviour
     {
         input.onMove += Move;
         input.onStopMove += StopMove;
+
+        input.onFire += Fire;
+        input.onStopFire += StopFire;
     }
 
 
@@ -53,6 +56,9 @@ public class Player : MonoBehaviour
     {
         input.onMove -= Move;
         input.onStopMove -= StopMove;
+
+        input.onFire -= Fire;
+        input.onStopFire -= StopFire;
     }
     // Update is called once per frame
     void Update()
@@ -60,6 +66,7 @@ public class Player : MonoBehaviour
         
     }
 
+    #region Move
     private void Move(Vector2 moveInput)
     {
         if (moveCoroutine != null)
@@ -103,4 +110,18 @@ public class Player : MonoBehaviour
             yield return null;
         }
     }
+    #endregion
+
+
+    #region Fire
+    private void Fire()
+    {
+
+    }
+
+    private void StopFire()
+    {
+
+    }
+    #endregion
 }

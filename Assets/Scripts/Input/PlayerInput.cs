@@ -9,6 +9,9 @@ public class PlayerInput : ScriptableObject,InputActions.IGamePlayActions
 {
     public event UnityAction<Vector2> onMove = delegate { };//定义开始移动事件
     public event UnityAction onStopMove = delegate { };//定义停止移动事件
+
+    public event UnityAction onFire = delegate { };
+    public event UnityAction onStopFire = delegate { };
     InputActions inputActios;
 
     void OnEnable()
@@ -64,4 +67,15 @@ public class PlayerInput : ScriptableObject,InputActions.IGamePlayActions
         }
     }
 
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            onFire.Invoke();
+        }
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            onStopFire.Invoke();
+        }
+    }
 }
